@@ -1,0 +1,9 @@
+pyproject.toml
+src/package_peeker/__init__.py
+src/package_peeker/cli.py
+src/package_peeker/core.py
+src/package_peeker.egg-info/PKG-INFO
+src/package_peeker.egg-info/SOURCES.txt
+src/package_peeker.egg-info/dependency_links.txt
+src/package_peeker.egg-info/entry_points.txt
+src/package_peeker.egg-info/top_level.txt
