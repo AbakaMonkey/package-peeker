@@ -1,5 +1,5 @@
 [build-system]
-requires = ['setuptools"]
+requires = ['setuptools']
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,7 +7,8 @@ name = "package-peeker"
 version = "0.1.0"
 
 dependencies = [
-	"simple_term_menu"
+	"simple_term_menu",
+	"python-pacman"
 ]
 
 [project.scripts]
