@@ -1,10 +1,13 @@
 # Package Peeker
+
 A lightweight minimalist extension for `pacman` that organizes all your packages in an organized list and allows easy access to remove them
---
+
 ## Installing
-```git clone https://github.com/AbakaMonkey/package-peeker
+```
+git clone https://github.com/AbakaMonkey/package-peeker
 cd package-peeker
-pip install .```
+pipx install .
+```
 ## To run the program:
 `package-peeker`
 
