@@ -10,11 +10,15 @@ def viewPackages(packages):
     if menu_entry_index is not None:
         return menu_entry_index
 
-def managePackage(package, description):
+def managePackage(package, description, version, license, size, date):
     subprocess.run('clear')
 
-    print(f"Editing package: {package}\n\n")
-    print(f"{description}")
+    print(f"Editing package: {package}\n")
+    print(f"{description}\n")
+    print(f"Version: {version}")
+    print(f"License: {license}")
+    print(f"Size: {size}")
+    print(f"Date: {date}\n")
 
     menu_items = ["Delete", "Close"]
     terminal_menu = TerminalMenu(menu_items, title=package)
@@ -22,6 +26,10 @@ def managePackage(package, description):
 
     if menu_entry_index is not None:
         return menu_items[menu_entry_index]
+
+def searchPackages():
+    print("Search packages:")
+    return input("[?]: ")
 
 if __name__ == "__main__":
     viewPackages()

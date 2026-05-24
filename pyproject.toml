@@ -5,7 +5,9 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "package-peeker"
 version = "0.1.0"
-
+description = "A simple minimalist extension for pacman that simplifies managment and organizes packages"
+readme = "README.md"
+requires-python = ">=3.14"
 dependencies = [
 	"simple_term_menu",
 	"python-pacman"
@@ -13,3 +15,10 @@ dependencies = [
 
 [project.scripts]
 package-peeker = "package_peeker.core:main"
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.409",
+    "pytest>=9.0.3",
+    "ruff>=0.15.14",
+]

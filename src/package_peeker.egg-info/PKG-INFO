@@ -1,5 +1,25 @@
 Metadata-Version: 2.4
 Name: package-peeker
 Version: 0.1.0
+Summary: A simple minimalist extension for pacman that simplifies managment and organizes packages
+Requires-Python: >=3.14
+Description-Content-Type: text/markdown
+License-File: LICENSE
 Requires-Dist: simple_term_menu
 Requires-Dist: python-pacman
+Dynamic: license-file
+
+# Package Peeker
+
+A lightweight minimalist extension for `pacman` that organizes all your packages in an organized list and allows easy access to remove them
+
+## Installing
+```
+git clone https://github.com/AbakaMonkey/package-peeker
+cd package-peeker
+pipx install .
+```
+## To run the program:
+`package-peeker`
+
+This DOES require the user to be root, but the script does that for you. And also I just don't want to figure out why appending sudo before the command just doesn't work... JUST LET IT DO IT FOR YOU MKAY?
