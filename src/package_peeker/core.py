@@ -21,9 +21,24 @@ def selectPackage():
     selected_pkg_name = packages[selected_pkg]
 
     if selected_pkg_name == "Search Packages":
-        return selected_pkg_name, "You are searching", "Null", "Null", "Null", "Null"
+        return {
+            "name": selected_pkg_name,
+            "description": "You are searching",
+            "version": None,
+            "license": None,
+            "size": None,
+            "date": None
+        }
+
     elif selected_pkg_name == "Clear Search Results":
-        return selected_pkg_name, "Clearing search results", "Null", "Null", "Null", "Null"
+        return {
+            "name": selected_pkg_name,
+            "description": "Clearing search results",
+            "version": None,
+            "license": None,
+            "size": None,
+            "date": None
+        }
     else:
         info_raw = pacman.get_info(selected_pkg_name)
         description = info_raw.get("Description")
@@ -32,12 +47,9 @@ def selectPackage():
         size = info_raw.get("Installed Size")
         date = info_raw.get("Install Date")
 
-        return {'name': selected_pkg_name,
-        'description': description,
-        'version': version,
-        'license': license,
-        'size': size,
-        'date': date}
+        data = dict(name=selected_pkg_name, description=description, version=version, license=license, size=size, date=date)
+
+        return data
 
 def selectFunction(pkg_information):
     function = cli.managePackage(pkg_information['name'], pkg_information['description'], pkg_information['version'], pkg_information['license'], pkg_information['size'], pkg_information['date'])
@@ -67,12 +79,11 @@ def main():
 
     while True:
         pkg_information = selectPackage()
-
-        if pkg_information['name'] == "Search Packages":
+        if pkg_information.get('name') == "Search Packages":
             search_query = cli.searchPackages()
             packages = [pkg for pkg in packages if pkg.startswith(search_query) or pkg == "Search Packages" or pkg == "Clear Search Results"]
             continue
-        elif pkg_information['name'] == "Clear Search Results":
+        elif pkg_information.get('name') == "Clear Search Results":
             packages = getAllPackages()
             continue
 
