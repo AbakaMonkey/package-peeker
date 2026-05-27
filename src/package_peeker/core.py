@@ -32,10 +32,15 @@ def selectPackage():
         size = info_raw.get("Installed Size")
         date = info_raw.get("Install Date")
 
-        return selected_pkg_name, description, version, license, size, date
+        return {'name': selected_pkg_name,
+        'description': description,
+        'version': version,
+        'license': license,
+        'size': size,
+        'date': date}
 
-def selectFunction(selected_pkg_name, description, version, license, size, date):
-    function = cli.managePackage(selected_pkg_name, description, version, license, size, date)
+def selectFunction(pkg_information):
+    function = cli.managePackage(pkg_information['name'], pkg_information['description'], pkg_information['version'], pkg_information['license'], pkg_information['size'], pkg_information['date'])
     return function
 
 def removePackage(packageName):
@@ -61,17 +66,17 @@ def main():
     packages = getAllPackages()
 
     while True:
-        pkg_name, pkg_desc, pkg_version, pkg_license, pkg_size, pkg_date = selectPackage()
+        pkg_information = selectPackage()
 
-        if pkg_name == "Search Packages":
+        if pkg_information['name'] == "Search Packages":
             search_query = cli.searchPackages()
             packages = [pkg for pkg in packages if pkg.startswith(search_query) or pkg == "Search Packages" or pkg == "Clear Search Results"]
             continue
-        elif pkg_name == "Clear Search Results":
+        elif pkg_information['name'] == "Clear Search Results":
             packages = getAllPackages()
             continue
 
-        function = selectFunction(pkg_name, pkg_desc, pkg_version, pkg_license, pkg_size, pkg_date)
+        function = selectFunction(pkg_information)
 
         if function == "Close":
             continue
